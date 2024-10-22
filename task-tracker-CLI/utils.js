@@ -141,6 +141,12 @@ const listTasksByStatus = async (status) => {
     }
 };
 
+async function commonlyUsedFunctions(taskCall) {
+  await displayTasks();
+  const id = await askQuestion("Enter task id: ");
+  await taskCall(parseInt(id));
+  await displayTasks();
+}
 
 module.exports = {
   addTask: addTask,
@@ -150,4 +156,5 @@ module.exports = {
   markInProgress: markInProgress,
   markDone: markDone,
   listTasksByStatus: listTasksByStatus,
+  commonlyUsedFunctions: commonlyUsedFunctions
 };

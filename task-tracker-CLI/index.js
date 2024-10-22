@@ -7,6 +7,7 @@ const {
   markInProgress,
   markDone,
   listTasksByStatus,
+  commonlyUsedFunctions,
 } = require("./utils");
 
 const rl = readline.createInterface({
@@ -36,27 +37,6 @@ const updateTaskDetails = async () => {
   await displayTasks();
 };
 
-const deleteTaskDetails = async () => {
-  await displayTasks();
-  const id = await askQuestion("Enter task id: ");
-  await deleteTask(parseInt(id));
-  await displayTasks();
-};
-
-const markTaskAsInProgress = async () => {
-  await displayTasks();
-  const id = await askQuestion("Enter task id: ");
-  await markInProgress(parseInt(id));
-  await displayTasks();
-};
-
-const markTaskAsDone = async () => {
-  await displayTasks();
-  const id = await askQuestion("Enter task id: ");
-  await markDone(parseInt(id));
-  await displayTasks();
-};
-
 const listTasksWithStatus = async () => {
   const status = await askQuestion(
     "Enter status to list (pending, in progress, done): "
@@ -80,25 +60,25 @@ Choose an option:
 
     switch (input) {
       case "1":
-        await createTask();
+        await createTask(); // Add Task
         break;
       case "2":
-        await updateTaskDetails();
+        await updateTaskDetails(); // Update Task
         break;
       case "3":
-        await deleteTaskDetails();
+        await commonlyUsedFunctions(deleteTask); // Delete Task
         break;
       case "4":
-        await markTaskAsInProgress();
+        await commonlyUsedFunctions(markInProgress); // Mark in progress
         break;
       case "5":
-        await markTaskAsDone();
+        await commonlyUsedFunctions(markDone); // Mark done
         break;
       case "6":
-        await listTasksWithStatus();
+        await listTasksWithStatus(); // List tasks by status
         break;
       case "7":
-        await displayTasks();
+        await displayTasks(); // Display tasks
         break;
       case "8":
         console.log("Exiting...");
