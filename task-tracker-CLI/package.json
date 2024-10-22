@@ -1,0 +1,26 @@
+{
+  "name": "task-tracker-cli",
+  "version": "1.0.0",
+  "description": "cli mode for task add",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mankal-27/backend-projects.git"
+  },
+  "keywords": [
+    "cli",
+    "nodejs"
+  ],
+  "author": "Manjunath",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mankal-27/backend-projects/issues"
+  },
+  "homepage": "https://github.com/mankal-27/backend-projects#readme",
+  "dependencies": {
+    "cli-progress": "^3.12.0"
+  }
+}
