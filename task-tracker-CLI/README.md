@@ -4,7 +4,8 @@ A simple command-line interface (CLI) task management application built with Nod
 
 ## Project URL
 
-You can access the project here: [Project URL]([https://github.com/mankal-27/backend-projects/tree/main/task-tracker-CLI])
+You can access the project here: [Project URL](https://github.com/mankal-27/backend-projects/tree/main/task-tracker-CLI)
+
 ## Features
 
 - Add new tasks with a name and description
