@@ -2,6 +2,9 @@
 
 A simple command-line interface (CLI) task management application built with Node.js. This application allows users to manage tasks by adding, updating, deleting, and listing tasks with visual feedback using progress bars.
 
+## Project URL
+
+You can access the project here: [Project URL]([https://github.com/mankal-27/backend-projects/tree/main/task-tracker-CLI])
 ## Features
 
 - Add new tasks with a name and description
