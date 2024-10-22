@@ -33,15 +33,16 @@ const saveTasks = async (tasks) => {
 
 //Function to add new task with an increment id
 
-const addTask = async (name, task) => {
+const addTask = async (task) => {
   const tasks = await readTasks();
 
   const lastTaskId = tasks.length > 0 ? tasks[tasks.length - 1].id : 0;
   const newTask = {
     id: lastTaskId + 1,
-    name: name,
     task: task,
-    status: "pending",
+    createdAt: new Date().toISOString(), // Add createdAt timestamp
+    updatedAt: new Date().toISOString(), // Add updatedAt timestamp (same as createdAt initially)
+    status: "pending"
   };
 
   tasks.push(newTask);
@@ -53,30 +54,30 @@ const addTask = async (name, task) => {
 // Display all tasks
 const displayTasks = async () => {
   const tasks = await readTasks();
+  
+  const formattedTasks = tasks.map(({ id, task, createdAt, updatedAt, status }) => ({
+    ID: id,
+    Task: task,
+    CreatedAt: new Date(createdAt).toLocaleString(), // Format the date
+    UpdatedAt: new Date(updatedAt).toLocaleString(), // Format the date
+    Status: status,
+  }));
 
-  //Format the tasks into a simpler array of objects for display
-  const formattedTasks = tasks.map(({id, name, task, status}) => ({
-      ID: id,
-      Name: name,
-      Task: task,
-      Status: status
-  }))
-  console.log("Tasks:");
-  console.table(formattedTasks);
+  console.table(formattedTasks); // Display the tasks in table format
 };
+
 
 const updateTask = async (id, task) => {
   const tasks = await readTasks();
-  const index = tasks.findIndex((task) => task.id === id);
+  const index = tasks.findIndex((taskItem) => taskItem.id === id);
+
   if (index !== -1) {
-    tasks[index] = {
-      ...tasks[index],
-      task: task,
-    };
+    tasks[index].task = task;
+    tasks[index].updatedAt = new Date().toISOString(); // Update the updatedAt timestamp
     await saveTasks(tasks);
-    console.log("Task updated successfully");
+    console.log('Task updated successfully');
   } else {
-    console.log("Task not found");
+    console.log('Task not found');
   }
 };
 
@@ -123,11 +124,12 @@ const listTasksByStatus = async (status) => {
 
     if (filteredTasks.length > 0) {
         // Format the filtered tasks for display
-        const formattedTasks = filteredTasks.map(({ id, name, task,status }) => ({
+        const formattedTasks = filteredTasks.map(({ id, task,status, createdAt, updatedAt }) => ({
             ID: id,
-            Name: name,
             Task: task,
-            Status: status
+            CreatedAt: new Date(createdAt).toLocaleString(), // Format the date
+            UpdatedAt: new Date(updatedAt).toLocaleString(), // Format the date
+            Status: status,
         }));
 
         console.log(

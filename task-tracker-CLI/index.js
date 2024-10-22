@@ -23,9 +23,8 @@ const askQuestion = (question) => {
 };
 
 const createTask = async () => {
-  const name = await askQuestion("Enter task name: ");
   const task = await askQuestion("Enter task: ");
-  await addTask(name, task);
+  await addTask(task);
   await displayTasks();
 };
 
