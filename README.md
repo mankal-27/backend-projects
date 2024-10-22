@@ -1,32 +1,9 @@
-# Task Management CLI
+## Backend Projects by [roadmap.sh](https://roadmap.sh)
 
-A simple command-line interface (CLI) task management application built with Node.js. This application allows users to manage tasks by adding, updating, deleting, and listing tasks with visual feedback using progress bars.
+This repository contains a list of project solutions for the [Backend Developer](https://roadmap.sh/backend) roadmap. The projects are divided into three categories: beginner, intermediate, and advanced.
 
-## Project URL
+Solution for each project is in the respective folder. The folder name is the same as the project name. Each project folder contains a `readme.md` file that describes the project and the solution.
 
-You can access the project here: [Project URL](https://github.com/mankal-27/backend-projects/tree/main/task-tracker-CLI)
+### Beginner Projects
 
-
-## Features
-
-- Add new tasks with a name and description
-- Update existing tasks
-- Delete tasks
-- Mark tasks as in progress or done
-- List all tasks or filter by status (pending, in progress, done)
-- Progress bars for visual feedback during long-running operations
-
-## Prerequisites
-
-- [Node.js](https://nodejs.org/) (version 14 or higher)
-
-## Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone 'https://github.com/mankal-27/backend-projects.git'
-   cd 'task-tracker-CLI'
-2. npm install
-3. usage
-   1. node index.js
+1. [Task Tracker](https://roadmap.sh/projects/task-tracker)
