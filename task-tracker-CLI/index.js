@@ -58,7 +58,7 @@ const markTaskAsDone = async () => {
   await displayTasks();
 };
 
-const listTasks = async () => {
+const listTasksWithStatus = async () => {
   const status = await askQuestion(
     "Enter status to list (pending, in progress, done): "
   );
@@ -75,7 +75,8 @@ Choose an option:
 4: Mark task as in progress
 5: Mark task as done
 6: List tasks by status
-7: Exit
+7: Display tasks
+8: Exit
 `);
 
     switch (input) {
@@ -95,9 +96,12 @@ Choose an option:
         await markTaskAsDone();
         break;
       case "6":
-        await listTasks();
+        await listTasksWithStatus();
         break;
       case "7":
+        await displayTasks();
+        break;
+      case "8":
         console.log("Exiting...");
         rl.close();
         return; // Exit the loop and function

@@ -53,7 +53,16 @@ const addTask = async (name, task) => {
 // Display all tasks
 const displayTasks = async () => {
   const tasks = await readTasks();
-  console.log("All Tasks:", tasks);
+
+  //Format the tasks into a simpler array of objects for display
+  const formattedTasks = tasks.map(({id, name, task, status}) => ({
+      ID: id,
+      Name: name,
+      Task: task,
+      Status: status
+  }))
+  console.log("Tasks:");
+  console.table(formattedTasks);
 };
 
 const updateTask = async (id, task) => {
@@ -109,13 +118,27 @@ const markDone = async (id) => {
 
 // List tasks based on status
 const listTasksByStatus = async (status) => {
-  const tasks = await readTasks();
-  const filteredTasks = tasks.filter((taskItem) => taskItem.status === status);
-  console.log(
-    `${status.charAt(0).toUpperCase() + status.slice(1)} Tasks:`,
-    filteredTasks
-  );
+    const tasks = await readTasks();
+    const filteredTasks = tasks.filter((taskItem) => taskItem.status === status);
+
+    if (filteredTasks.length > 0) {
+        // Format the filtered tasks for display
+        const formattedTasks = filteredTasks.map(({ id, name, task,status }) => ({
+            ID: id,
+            Name: name,
+            Task: task,
+            Status: status
+        }));
+
+        console.log(
+            `${status.charAt(0).toUpperCase() + status.slice(1)} Tasks:`
+        );
+        console.table(formattedTasks); // Display the filtered tasks in table format
+    } else {
+        console.log(`No tasks found with status: ${status}`);
+    }
 };
+
 
 module.exports = {
   addTask: addTask,
