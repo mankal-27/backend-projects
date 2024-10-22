@@ -22,7 +22,7 @@ const askQuestion = (question) => {
   });
 };
 
-const getTaskDetails = async () => {
+const createTask = async () => {
   const name = await askQuestion("Enter task name: ");
   const task = await askQuestion("Enter task: ");
   await addTask(name, task);
@@ -80,7 +80,7 @@ Choose an option:
 
     switch (input) {
       case "1":
-        await getTaskDetails();
+        await createTask();
         break;
       case "2":
         await updateTaskDetails();
